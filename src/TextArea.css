@@ -128,9 +128,7 @@ body{
 @media (max-width: 660px){
   .container{
     padding: 20px;
-    /* max-width: 200px; */
     width: 100%;
-    /* max-width: 500px; */
   }
   .wrapper .text-input{
     flex-direction: column;
@@ -142,16 +140,16 @@ body{
   .text-input textarea{
     height: 200px;
   }
-  /* .controls .row .icons{
-    display: none;
-  } */
   .container button{
     padding: 13px;
     font-size: 16px;
   }
-  /* .controls{
-    padding:  0px 0px;
-  } */
+  .controls .row .icons i{
+    width: 10%;
+  }
+  .fa-copy{
+    display: none !important;
+  }
   .controls .row select{
     font-size: 13px;
   }
