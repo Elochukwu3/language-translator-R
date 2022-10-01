@@ -19,23 +19,21 @@ function Plainarea() {
   };
   let placeholderItem = 'Translation'
 
-   function translateText(e) {
+  async function translateText(e) {
     e.preventDefault();
     if(!textVal) return;
     placeholderItem = 'Translating';
-    console.log(placeholderItem);
     let apiUrl = `https://api.mymemory.translated.net/get?q=${textVal}&langpair=${language}|${languageTo}`;
-    // const res = await fetch(apiUrl);
-    // const data = await res.json();
-    fetch(apiUrl).then(res => res.json()).then(data => {
-      setTextValTo(data.responseData.translatedText);
-  });
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    setTextValTo(data.responseData.translatedText);
   };
   
 
 const copyTranlated = (p)=>{
   navigator.clipboard.writeText(p);
-}
+};
+
 const audioTranlated = (p, l)=>{
  let utterance = new SpeechSynthesisUtterance(p);
  utterance.lang = l;
