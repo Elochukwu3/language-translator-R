@@ -17,14 +17,22 @@ function Plainarea() {
   const changeTextValue = (e) => {
     setTextVal(e.target.value.trim());
   };
+  let placeholderItem = 'Translation'
 
-  async function translateText(e) {
+   function translateText(e) {
     e.preventDefault();
+    if(!textVal) return;
+    placeholderItem = 'Translating';
+    console.log(placeholderItem);
     let apiUrl = `https://api.mymemory.translated.net/get?q=${textVal}&langpair=${language}|${languageTo}`;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    setTextValTo(data.responseData.translatedText);
-  }
+    // const res = await fetch(apiUrl);
+    // const data = await res.json();
+    fetch(apiUrl).then(res => res.json()).then(data => {
+      setTextValTo(data.responseData.translatedText);
+  });
+  };
+  
+
 const copyTranlated = (p)=>{
   navigator.clipboard.writeText(p);
 }
@@ -49,7 +57,7 @@ const audioTranlated = (p, l)=>{
 
   return (
       <div className="container">
-        <h1>Text Converter </h1> <span>{dateDisplay} </span>
+       <div className="headerText"> <h1>Text Converter </h1> <span>TIME ({dateDisplay}) </span></div>
         <div className="wrapper">
           <div className="text-input">
             <textarea
@@ -63,7 +71,7 @@ const audioTranlated = (p, l)=>{
               readOnly
               disabled
               className="to-text"
-              placeholder="Translation"
+              placeholder= {placeholderItem}
               value={textValTo}
             ></textarea>
           </div>

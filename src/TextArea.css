@@ -22,6 +22,12 @@ body{
   border-radius: 7px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.01);
 }
+.container .headerText{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
 .wrapper{
   border-radius: 5px;
   border: 1px solid #ccc;
