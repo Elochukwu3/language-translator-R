@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../TextArea.css";
+import "./TextArea.css";
 import Options from "./Options";
 
 function Plainarea() {
