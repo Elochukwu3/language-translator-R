@@ -8,16 +8,8 @@ function Plainarea() {
   const [languageTo, setLanguageTo] = useState("fi-FI");
   const [textVal, setTextVal] = useState("");
   const [textValTo, setTextValTo] = useState("");
-  const languageFrom = (e) => {
-    setLanguage(e.target.value);
-  };
-  const changeLanguageTo = (e) => {
-    setLanguageTo(e.target.value);
-  };
-  const changeTextValue = (e) => {
-    setTextVal(e.target.value.trim());
-  };
-  let placeholderItem = 'Translation'
+ 
+  let placeholderItem = 'Translation';
 
   async function translateText(e) {
     e.preventDefault();
@@ -27,8 +19,7 @@ function Plainarea() {
     const res = await fetch(apiUrl);
     const data = await res.json();
     setTextValTo(data.responseData.translatedText);
-  };
-  
+  }; 
 
 const copyTranlated = (p)=>{
   navigator.clipboard.writeText(p);
@@ -38,20 +29,13 @@ const audioTranlated = (p, l)=>{
  let utterance = new SpeechSynthesisUtterance(p);
  utterance.lang = l;
  window.speechSynthesis.speak(utterance);
+};
 
-}
-// exchageIcon.addEventListener("click", () => {
-//   let tempText = fromText.value,
-//   tempLang = selectTag[0].value;
-//   fromText.value = toText.value;
-//   toText.value = tempText;
-//   selectTag[0].value = selectTag[1].value;
-//   selectTag[1].value = tempLang;
-// });
-  let date = new Date();
+let date = new Date();
   const hour = date.getHours();
   date = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} `;
   const dateDisplay = hour >= 12 ? `${date} PM` : `${date} AM`;
+
 
   return (
       <div className="container">
@@ -62,7 +46,7 @@ const audioTranlated = (p, l)=>{
               spellCheck="false"
               className="from-text"
               placeholder="Enter text"
-              onChange={changeTextValue}
+              onChange={(e)=>setTextVal(e.target.value.trim())}
             ></textarea>
             <textarea
               spellCheck="false"
@@ -79,7 +63,7 @@ const audioTranlated = (p, l)=>{
                 <i id="from" className="fas fa-volume-up" onClick={()=>audioTranlated(textVal, language)}></i>
                 <i id="from" className="fas fa-copy" onClick={()=>copyTranlated(textVal)}></i>
               </div>
-              <select onChange={languageFrom} value={language}>
+              <select onChange={(e)=>setLanguage(e.target.value)} value={language}>
                 <Options />
               </select>
             </li>
@@ -87,7 +71,7 @@ const audioTranlated = (p, l)=>{
               <i className="fas fa-exchange-alt"></i>
             </li>
             <li className="row to">
-              <select onChange={changeLanguageTo} value={languageTo}>
+              <select onChange={(e)=>setLanguageTo(e.target.value)} value={languageTo}>
                 <Options />
               </select>
               <div className="icons">

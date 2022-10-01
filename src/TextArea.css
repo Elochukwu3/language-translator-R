@@ -133,8 +133,8 @@ body{
 
 @media (max-width: 660px){
   .container{
-    padding: 20px;
-    width: 100%;
+    padding: 18px;
+    width: 94%;
   }
   .wrapper .text-input{
     flex-direction: column;
@@ -161,5 +161,8 @@ body{
   }
   .controls .exchange{
     font-size: 13px;
+  }
+  h1{
+    font-size: 1.287rem;
   }
 }
