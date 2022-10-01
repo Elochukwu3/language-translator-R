@@ -32,6 +32,7 @@ const audioTranlated = (p, l)=>{
  let utterance = new SpeechSynthesisUtterance(p);
  utterance.lang = l;
  window.speechSynthesis.speak(utterance);
+
 }
 // exchageIcon.addEventListener("click", () => {
 //   let tempText = fromText.value,
