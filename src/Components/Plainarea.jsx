@@ -48,7 +48,6 @@ const audioTranlated = (p, l)=>{
   const dateDisplay = hour >= 12 ? `${date} PM` : `${date} AM`;
 
   return (
-    <div>
       <div className="container">
         <h1>Text Converter </h1> <span>{dateDisplay} </span>
         <div className="wrapper">
@@ -94,7 +93,7 @@ const audioTranlated = (p, l)=>{
         </div>
         <button onClick={translateText}>Translate Text</button>
       </div>
-    </div>
+    
   );
 }
 export default Plainarea;
